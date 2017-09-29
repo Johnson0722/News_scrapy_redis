@@ -16,9 +16,9 @@ class InfoQ(CrawlSpider):
 
     rules = (
         # 从起始页提取匹配正则式'/channel/\d{1,3}\.html'的链接，并使用parse来解析
-        Rule(LxmlLinkExtractor(allow=(r'/cn/[a-z]+/.+', )), follow=True),
+        Rule(LxmlLinkExtractor(allow=(r'infoq\.com/cn/[a-z]+/.+', )), follow=True),
         # 提取匹配'/article/[\d]+.html'的链接，并使用parse_item_yield来解析它们下载后的内容，不递归
-        Rule(LxmlLinkExtractor(allow=(r'/cn/news/\d{4}/\d{2}/.+', )), callback='parse_item'),
+        Rule(LxmlLinkExtractor(allow=(r'infoq\.com/cn/news/\d{4}/\d{2}/.+',)), callback='parse_item'),
     )
 
 

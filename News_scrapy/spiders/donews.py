@@ -4,7 +4,7 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from News_scrapy.items import NewsItem
 
-# FIXME: xpath does't work
+
 class Donews(CrawlSpider):
     # 爬虫名
     name = "donews"

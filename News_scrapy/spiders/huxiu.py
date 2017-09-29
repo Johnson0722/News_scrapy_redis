@@ -2,9 +2,10 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import HuxiuItem
+from News_scrapy.items import NewsItem
 
-# FIXME: SSL error
+
+
 class Huxiu(CrawlSpider):
     # 爬虫名
     name = "huxiu"
@@ -18,12 +19,12 @@ class Huxiu(CrawlSpider):
         # 从起始页提取匹配正则式'/channel/\d{1,3}\.html'的链接，并使用parse来解析
         Rule(LxmlLinkExtractor(allow=(r'/channel/\d{1,3}/\.html', )), follow=True),
         # 提取匹配'/article/[\d]+.html'的链接，并使用parse_item_yield来解析它们下载后的内容，不递归
-        Rule(LxmlLinkExtractor(allow=(r'/article/\d+/\.html', )), callback='parse_item'),
+        Rule(LxmlLinkExtractor(allow=(r'/article/\d+\.html', )), callback='parse_item'),
     )
 
 
     def parse_item(self, response):
-        item = HuxiuItem()
+        item = NewsItem()
 
         item['url'] = response.url
         # get article id

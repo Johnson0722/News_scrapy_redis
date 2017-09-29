@@ -5,7 +5,7 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from News_scrapy.items import NewsItem
 
-# FIXME: crawl page sucessfully (200), but can't get contents, actually can't open json file
+
 class Caixin(CrawlSpider):
     # 爬虫名
     name = "caixin"
@@ -17,9 +17,9 @@ class Caixin(CrawlSpider):
 
     rules = (
         # 从起始页提取匹配正则式'/channel/\d{1,3}\.html'的链接，并使用parse来解析
-        Rule(LxmlLinkExtractor(allow=(r'[a-z]+\.caixin.com', )), follow=True),
+        Rule(LxmlLinkExtractor(allow=(r'caixin\.com/[a-z]+/', )), follow=True),
         # 提取匹配'/article/[\d]+.html'的链接，并使用parse_item_yield来解析它们下载后的内容，不递归
-        Rule(LxmlLinkExtractor(allow=(r'/[\d|-]{10}/\d+\.html', )), callback='parse_item'),
+        Rule(LxmlLinkExtractor(allow=(r'caixin\.com/[\d|-]{10}/\d+\.html', )), callback='parse_item'),
     )
 
 

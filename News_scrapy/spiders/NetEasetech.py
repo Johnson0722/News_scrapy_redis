@@ -2,9 +2,9 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import NetEasetechItem
+from News_scrapy.items import NewsItem
 
-#FIXME: only a few news
+
 class NetEasetech(CrawlSpider):
     # 爬虫名
     name = "neteasetech"
@@ -23,7 +23,7 @@ class NetEasetech(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = NetEasetechItem()
+        item = NewsItem()
         item['url'] = response.url
         item['title'] = response.xpath('//*[@id="epContentLeft"]/h1/text()').extract()[0].strip()
         item['pub_time'] = response.xpath('//*[@id="epContentLeft"]/div[1]/text()').extract()[0].strip()[:10]

@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import RsarxivItem
+from News_scrapy.items import NewsItem
 
 
 class Syncedreview(CrawlSpider):
@@ -23,7 +23,7 @@ class Syncedreview(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = RsarxivItem()
+        item = NewsItem()
         item['url'] = response.url
         item['title'] = response.xpath('//*[@id="wrapper"]/article/div/header/h1/text()').extract()[0].strip()
         item['pub_time'] = response.xpath('//*[@id="wrapper"]/article/div/header/time/a/text()').extract()[0].strip()

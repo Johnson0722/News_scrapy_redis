@@ -2,9 +2,9 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import DgtleItem
+from News_scrapy.items import NewsItem
 
-# FIXME:after crawling about 5k news, 503 Service Unavailable occured, use a lot of time
+
 class Dgtle(CrawlSpider):
     # 爬虫名
     name = "dgtle"
@@ -23,7 +23,7 @@ class Dgtle(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = DgtleItem()
+        item = NewsItem()
         item['url'] = response.url
         item['title'] =  response.xpath('/html/body/div[3]/h2/a/text()').extract()[0].strip()
         item['pub_time'] = response.xpath('/html/body/div[3]/div/div[1]/i/text()').extract()[0].strip()

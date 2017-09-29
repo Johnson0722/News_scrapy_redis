@@ -6,7 +6,7 @@ from News_scrapy.items import NewsItem
 
 
 
-# FIXME: DEBUG: Crawled (200) <GET http://weixin.sogou.com/> 
+# FIXME: DEBUG: Crawled (200) <GET http://weixin.sogou.com/>
 class Sougou(CrawlSpider):
     # 爬虫名
     name = "sougou"
@@ -20,7 +20,7 @@ class Sougou(CrawlSpider):
         # 从起始页提取匹配正则式'/channel/\d{1,3}\.html'的链接，并使用parse来解析
         # Rule(LxmlLinkExtractor(allow=(r'/scientific/channel/[a-z]+/', )), follow=True),
         # 提取匹配'/article/[\d]+.html'的链接，并使用parse_item_yield来解析它们下载后的内容，不递归
-        Rule(LxmlLinkExtractor(allow=(r'mp\.weixin\.qq\.com/s\?src=11.+', )), callback='parse_item'),
+        Rule(LxmlLinkExtractor(allow=(r'mp\.weixin\.qq\.com/s\?.+', )), callback='parse_item'),
     )
 
 

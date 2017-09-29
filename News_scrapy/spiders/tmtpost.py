@@ -4,7 +4,7 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from News_scrapy.items import NewsItem
 
-# FIXME: can't get content using xpath
+
 class Tmtpost(CrawlSpider):
     # 爬虫名
     name = "tmtpost"
@@ -25,9 +25,9 @@ class Tmtpost(CrawlSpider):
     def parse_item(self, response):
         item = NewsItem()
         item['url'] = response.url
-        item['title'] =  response.xpath('/html/body/div[13]/div/section/div/article/h1/text()').extract()[0].strip()
-        item['pub_time'] = response.xpath('//*[@id="article_title"]/div/span[2]/text()').extract()[0]
-        item['content_code'] = response.xpath('/html/body/div[7]/div/div[1]/div[1]').extract()[0]
+        item['title'] =  response.xpath('//h1/text()').extract()[0].strip()
+        item['pub_time'] = response.xpath('//span[@class="time"]/text()').extract()[0][:10]
+        item['content_code'] = response.xpath('//article/div[2]').extract()[0]
 
         # 返回每个提取到的item数据, 给管道文件处理, 同时还会回来执行后面的代码
         yield item

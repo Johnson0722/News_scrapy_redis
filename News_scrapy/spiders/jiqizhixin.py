@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import JiqizhixinItem
+from News_scrapy.items import NewsItem
 
 
 class JiqizhixinSpider(CrawlSpider):
@@ -23,7 +23,7 @@ class JiqizhixinSpider(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = JiqizhixinItem()
+        item = NewsItem()
 
         # extract article info by xpath
         node = response.xpath('//*[@id="articles-show"]/article')

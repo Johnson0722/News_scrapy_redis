@@ -114,6 +114,9 @@ class NewsScrapyPipeline(object):
         if spider.name == 'sougou':
             self.f = open('sougou.json', 'a')
 
+        if spider.name == 'economist':
+            self.f = open('economist.json', 'a')
+
         # 中文使用unicode编码
         content = json.dumps(dict(item), ensure_ascii=False) + '\n'
         self.f.write(content)

@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import DgtleItem
+from News_scrapy.items import NewsItem
 
 # FIXME:can't get content using xpath
 class Economist(CrawlSpider):
@@ -23,11 +23,12 @@ class Economist(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = DgtleItem()
+        item = NewsItem()
         item['url'] = response.url
-        item['title'] =  response.xpath('/html/body/div[3]/h2/a/text()').extract()[0].strip()
-        item['pub_time'] = response.xpath('/html/body/div[3]/div/div[1]/i/text()').extract()[0].strip()
-        item['content_code'] = response.xpath('/html/body/div[4]/div[1]').extract()[0].strip()
+        item['title'] =  response.xpath('//h1/span[2]/text()').extract()[0].strip()
+        item['pub_time'] = response.xpath('//time[1]/text()').extract()[0].strip()
+        item['content_code'] = response.xpath('//main/div/div[1]/div/article/div[1]').extract()[0].strip()
+
 
 
         # 返回每个提取到的item数据, 给管道文件处理, 同时还会回来执行后面的代码

@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import ZhidxItem
+from News_scrapy.items import NewsItem
 
 
 class Xtecher(CrawlSpider):
@@ -23,7 +23,7 @@ class Xtecher(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = ZhidxItem()
+        item = NewsItem()
         item['url'] = response.url
         item['title'] =  response.xpath('//*[@id="container"]/section/div/div[1]/div[2]/h1/text()').extract()[0].strip()
         item['pub_time'] = response.xpath('//*[@id="container"]/section/div/div[1]/div[2]/p/em[5]/text()').extract()[0].strip()

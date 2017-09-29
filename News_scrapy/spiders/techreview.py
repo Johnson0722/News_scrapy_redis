@@ -2,7 +2,7 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from News_scrapy.items import TechreviewItem
+from News_scrapy.items import NewsItem
 
 
 class Techreview(CrawlSpider):
@@ -23,7 +23,7 @@ class Techreview(CrawlSpider):
 
 
     def parse_item(self, response):
-        item = TechreviewItem()
+        item = NewsItem()
 
         item['url'] = response.url
         item['title'] = response.xpath('/html/body/main/section/article/div/div[1]/div[2]/div/div[1]/h1/text()').extract()[0].strip()

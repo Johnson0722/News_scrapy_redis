@@ -5,21 +5,20 @@ from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from News_scrapy.items import NewsItem
 from scrapy import Selector
 
-# FIXME: DEBFG Crawed (200), but can't get contents, actually can't open json file
 class Lijiresearch(CrawlSpider):
     # 爬虫名
     name = "lijiresearch"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["lijiresearch.com",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://www.lijiresearch.com/']
+    start_urls = ['http://www.lijiresearch.com/', 'http://www.lijiresearch.com/zixun/']
 
 
     rules = (
         # 从起始页提取匹配正则式'/channel/\d{1,3}\.html'的链接，并使用parse来解析
-        Rule(LxmlLinkExtractor(allow=(r'lijiresearch.com/[a-z]+/[a-z]+/', )), follow=True),
+        Rule(LxmlLinkExtractor(allow=(r'lijiresearch\.com/index_\d\.html', r'http://www.lijiresearch.com/zixun/index_\d.html')), follow=True),
         # 提取匹配'/article/[\d]+.html'的链接，并使用parse_item_yield来解析它们下载后的内容，不递归
-        Rule(LxmlLinkExtractor(allow=(r'lijiresearch.com/[a-z]+/[a-z]+/\d+\.html', )), callback='parse_item'),
+        Rule(LxmlLinkExtractor(allow=(r'lijiresearch\.com/[a-z]+/[a-z]+/\d+\.html', )), callback='parse_item'),
     )
 
 

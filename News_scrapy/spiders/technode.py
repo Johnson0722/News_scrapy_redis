@@ -5,7 +5,7 @@ from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from News_scrapy.items import NewsItem
 
 
-# FIXME: DEBUG: Crawled (200)
+
 class technode(CrawlSpider):
     # 爬虫名
     name = "technode"
@@ -26,9 +26,10 @@ class technode(CrawlSpider):
     def parse_item(self, response):
         item = NewsItem()
         item['url'] = response.url
-        item['title'] =  response.xpath('//*[@id="post-135577"]/header/h1/text()').extract()[0].strip()
-        item['pub_time'] = response.xpath('//*[@id="post-135577"]/header/div/time/text()').extract()[0]
-        item['content_code'] = response.xpath('//*[@id="post-135577"]').extract()[0]
+        item['title'] =  response.xpath('//*/header/h1/text()').extract()[0].strip()
+        item['pub_time'] = response.xpath('//*/header/div/time/text()').extract()[0]
+        item['content_code'] = response.xpath('//*[@id="inner-wrap"]/div[5]/div/div/div/div/div/div[1]/article').extract()[0]
+
 
         # 返回每个提取到的item数据, 给管道文件处理, 同时还会回来执行后面的代码
         yield item
