@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 from scrapy import Selector
 
-class Lijiresearch(CrawlSpider):
+class Lijiresearch(RedisCrawlSpider):
     # 爬虫名
     name = "lijiresearch"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["lijiresearch.com",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://www.lijiresearch.com/', 'http://www.lijiresearch.com/zixun/']
+    redis_key = "lijiresearch:start_urls"
+    # start_urls = ['http://www.lijiresearch.com/', 'http://www.lijiresearch.com/zixun/']
+
 
 
     rules = (

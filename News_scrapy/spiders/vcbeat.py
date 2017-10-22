@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 
-class Vcbeat(CrawlSpider):
+class Vcbeat(RedisCrawlSpider):
     # 爬虫名
     name = "vcbeat"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["vcbeat.net",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://vcbeat.net/', 'http://vcbeat.net/Series/seriesIndex']
+    redis_key = "vcbeat:start_urls"
+    # start_urls = ['http://vcbeat.net/', 'http://vcbeat.net/Series/seriesIndex']
 
 
     rules = (

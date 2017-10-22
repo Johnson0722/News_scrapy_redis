@@ -1,27 +1,27 @@
-
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 
-class Tech2ipo(CrawlSpider):
+class Tech2ipo(RedisCrawlSpider):
     # 爬虫名
     name = "tech2ipo"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["tech2ipo.com",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://tech2ipo.com/',
-                  'http://tech2ipo.com/special/11',
-                  'http://tech2ipo.com/special/12',
-                  'http://tech2ipo.com/special/13',
-                  'http://tech2ipo.com/special/14',
-                  'http://tech2ipo.com/special/1',
-                  'http://tech2ipo.com/special/6',
-                  'http://tech2ipo.com/special/7',
-                  'http://tech2ipo.com/special/8',
-                  'http://tech2ipo.com/special/9',]
+    redis_key = 'tech2ipo:start_urls'
+    # start_urls = ['http://tech2ipo.com/',
+    #               'http://tech2ipo.com/special/11',
+    #               'http://tech2ipo.com/special/12',
+    #               'http://tech2ipo.com/special/13',
+    #               'http://tech2ipo.com/special/14',
+    #               'http://tech2ipo.com/special/1',
+    #               'http://tech2ipo.com/special/6',
+    #               'http://tech2ipo.com/special/7',
+    #               'http://tech2ipo.com/special/8',
+    #               'http://tech2ipo.com/special/9',]
 
 
     rules = (

@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 # FIXME: get page successfully(200), but can't write content to json file, Actually no json file opend
 
-class Finance_ifeng(CrawlSpider):
+class Finance_ifeng(RedisCrawlSpider):
     # 爬虫名
     name = "finance_ifeng"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["ifeng.com"]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://finance.ifeng.com/',
-                  'http://tech.ifeng.com/',
-                  'http://finance.ifeng.com/stock/gstzgc/']
+    redis_key = 'finance_ifeng:start_urls'
+    # start_urls = ['http://finance.ifeng.com/',
+    #               'http://tech.ifeng.com/',
+    #               'http://finance.ifeng.com/stock/gstzgc/']
 
 
     rules = (

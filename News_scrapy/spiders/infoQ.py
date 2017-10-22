@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 # FIXME: crawl page sucessfully (200), but can't get contents, actually can't open json file
-class InfoQ(CrawlSpider):
+class InfoQ(RedisCrawlSpider):
     # 爬虫名
     name = "infoq"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["infoq.com",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://www.infoq.com/cn/']
+    redis_key = 'infoq:start_urls'
+    # start_urls = ['http://www.infoq.com/cn/']
 
 
     rules = (

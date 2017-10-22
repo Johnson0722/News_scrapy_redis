@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 
 # FIXME: Can't get items using xpath
-class Kr(CrawlSpider):
+class Kr(RedisCrawlSpider):
     # 爬虫名
     name = "36kr"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["36kr.com"]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['https://36kr.com/', ]
+    redis_key = '36kr:start_urls'
+    # start_urls = ['https://36kr.com/', ]
 
 
     rules = (

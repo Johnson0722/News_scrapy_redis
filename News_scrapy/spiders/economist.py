@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 # FIXME:can't get content using xpath
-class Economist(CrawlSpider):
+class Economist(RedisCrawlSpider):
     # 爬虫名
     name = "economist"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["economist.com"]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['https://www.economist.com/']
+    redis_key = 'economist:start_urls'
+    # start_urls = ['https://www.economist.com/']
 
 
     rules = (

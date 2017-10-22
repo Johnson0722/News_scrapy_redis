@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.spiders import CrawlSpider, Rule
+from scrapy.spiders import Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from scrapy_redis.spiders import RedisCrawlSpider
 from News_scrapy.items import NewsItem
 
 
-class Dsj36(CrawlSpider):
+class Dsj36(RedisCrawlSpider):
     # 爬虫名
     name = "36dsj"
     # 爬取域范围, 允许爬虫在这个域名下进行爬取
     allowed_domains = ["36dsj.com",]
     # 起始url列表, 爬虫执行后的第一批请求, 队列处理
-    start_urls = ['http://www.36dsj.com/']
+    redis_key = '36dsj:start_urls'
+    # start_urls = ['http://www.36dsj.com/']
 
 
     rules = (
