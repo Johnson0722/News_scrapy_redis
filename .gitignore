@@ -1,6 +1,3 @@
-/data
-/news_2017-09-28-18:32:39
-*.json
-re_test.py
-scrapy.cfg
+/ETL/Model
+/News_data
 *.pyc
