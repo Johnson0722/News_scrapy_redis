@@ -18,6 +18,11 @@ NEWSPIDER_MODULE = 'News_scrapy.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:7.0.1) Gecko/20100101 Firefox/7.7'
 
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+SCHEDULER_PERSIST = True
+
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
@@ -66,8 +71,13 @@ CONCURRENT_REQUESTS = 32
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'News_scrapy.pipelines.NewsScrapyPipeline': 300,
-
 }
+
+REDIS_URL = None
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = 6379
+
+LOG_LEVEL = 'DEBUG'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
