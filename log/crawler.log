@@ -1,0 +1,72 @@
+2017-10-31 18:42:57 [scrapy.utils.log] INFO: Scrapy 1.3.3 started (bot: News_scrapy)
+2017-10-31 18:42:57 [scrapy.utils.log] INFO: Overridden settings: {'BOT_NAME': 'News_scrapy', 'CONCURRENT_REQUESTS': 32, 'DUPEFILTER_CLASS': 'scrapy_redis.dupefilter.RFPDupeFilter', 'NEWSPIDER_MODULE': 'News_scrapy.spiders', 'SCHEDULER': 'scrapy_redis.scheduler.Scheduler', 'SPIDER_MODULES': ['News_scrapy.spiders'], 'USER_AGENT': 'Mozilla/5.0 (X11; Linux x86_64; rv:7.0.1) Gecko/20100101 Firefox/7.7'}
+2017-10-31 18:42:57 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2017-10-31 18:42:57 [aitists] INFO: Reading start URLs from redis key 'aitists:start_urls' (batch size: 32, encoding: utf-8
+2017-10-31 18:42:57 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2017-10-31 18:42:57 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2017-10-31 18:42:57 [scrapy.middleware] INFO: Enabled item pipelines:
+['News_scrapy.pipelines.NewsScrapyPipeline']
+2017-10-31 18:42:57 [scrapy.core.engine] INFO: Spider opened
+2017-10-31 18:42:57 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2017-10-31 18:42:57 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6023
+2017-10-31 18:42:57 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy/core/engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy_redis/spiders.py", line 87, in next_requests
+    self.crawler.engine.close_spider(self.spider, 'queue is empty')
+AttributeError: 'Aitists' object has no attribute 'spider'
+2017-10-31 18:42:57 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.aitists.com/> (referer: None)
+2017-10-31 18:42:57 [scrapy_redis.dupefilter] DEBUG: Filtered duplicate request <GET http://www.aitists.com/category/%E6%9C%80%E6%96%B0%E5%8A%A8%E6%80%81/ai%E5%A4%B4%E6%9D%A1> - no more duplicates will be shown (see DUPEFILTER_DEBUG to show all duplicates)
+2017-10-31 18:42:57 [scrapy.utils.signal] ERROR: Error caught on signal handler: <bound method RedisMixin.spider_idle of <Aitists 'aitists' at 0x7f12f8a23860>>
+Traceback (most recent call last):
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy/utils/signal.py", line 30, in send_catch_log
+    *arguments, **named)
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/pydispatch/robustapply.py", line 55, in robustApply
+    return receiver(*arguments, **named)
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy_redis/spiders.py", line 123, in spider_idle
+    self.schedule_next_requests()
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy_redis/spiders.py", line 117, in schedule_next_requests
+    for req in self.next_requests():
+  File "/home/johnso/anaconda3/lib/python3.6/site-packages/scrapy_redis/spiders.py", line 87, in next_requests
+    self.crawler.engine.close_spider(self.spider, 'queue is empty')
+AttributeError: 'Aitists' object has no attribute 'spider'
+2017-10-31 18:42:57 [scrapy.core.engine] INFO: Closing spider (finished)
+2017-10-31 18:42:57 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 248,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 9565,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2017, 10, 31, 10, 42, 57, 621708),
+ 'log_count/DEBUG': 3,
+ 'log_count/ERROR': 2,
+ 'log_count/INFO': 8,
+ 'request_depth_max': 1,
+ 'response_received_count': 1,
+ 'scheduler/dequeued/redis': 1,
+ 'scheduler/enqueued/redis': 1,
+ 'start_time': datetime.datetime(2017, 10, 31, 10, 42, 57, 389593)}
+2017-10-31 18:42:57 [scrapy.core.engine] INFO: Spider closed (finished)
++++++queue is empty
++++++queue is empty

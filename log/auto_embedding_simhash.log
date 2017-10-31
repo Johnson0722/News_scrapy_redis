@@ -1,0 +1,47 @@
+2017-10-31 18:42:59,113 : INFO : loading Dictionary object from Model/dict_titles
+2017-10-31 18:42:59,125 : INFO : loaded Model/dict_titles
+2017-10-31 18:42:59,125 : INFO : loading Dictionary object from Model/dict_contents
+2017-10-31 18:42:59,256 : INFO : loaded Model/dict_contents
+2017-10-31 18:42:59,256 : INFO : loading LdaModel object from Model/lda_title.model
+2017-10-31 18:42:59,257 : INFO : loading expElogbeta from Model/lda_title.model.expElogbeta.npy with mmap=None
+2017-10-31 18:42:59,264 : INFO : setting ignored attribute state to None
+2017-10-31 18:42:59,264 : INFO : setting ignored attribute id2word to None
+2017-10-31 18:42:59,264 : INFO : setting ignored attribute dispatcher to None
+2017-10-31 18:42:59,264 : INFO : loaded Model/lda_title.model
+2017-10-31 18:42:59,264 : INFO : loading LdaModel object from Model/lda_title.model.state
+2017-10-31 18:42:59,287 : INFO : loaded Model/lda_title.model.state
+2017-10-31 18:42:59,299 : INFO : loading LdaModel object from Model/lda_content.model
+2017-10-31 18:42:59,304 : INFO : loading expElogbeta from Model/lda_content.model.expElogbeta.npy with mmap=None
+2017-10-31 18:42:59,328 : INFO : setting ignored attribute state to None
+2017-10-31 18:42:59,328 : INFO : setting ignored attribute id2word to None
+2017-10-31 18:42:59,328 : INFO : setting ignored attribute dispatcher to None
+2017-10-31 18:42:59,328 : INFO : loaded Model/lda_content.model
+2017-10-31 18:42:59,328 : INFO : loading LdaModel object from Model/lda_content.model.state
+2017-10-31 18:42:59,333 : INFO : loading sstats from Model/lda_content.model.state.sstats.npy with mmap=None
+2017-10-31 18:42:59,357 : INFO : loaded Model/lda_content.model.state
+2017-10-31 18:42:59,518 : INFO : loading TfidfModel object from Model/tfidf_title.model
+2017-10-31 18:42:59,522 : INFO : loaded Model/tfidf_title.model
+2017-10-31 18:42:59,523 : INFO : loading Word2Vec object from Model/wv.model
+2017-10-31 18:43:01,832 : INFO : loading wv recursively from Model/wv.model.wv.* with mmap=None
+2017-10-31 18:43:01,832 : INFO : loading syn0 from Model/wv.model.wv.syn0.npy with mmap=None
+2017-10-31 18:43:02,167 : INFO : setting ignored attribute syn0norm to None
+2017-10-31 18:43:02,167 : INFO : loading syn1neg from Model/wv.model.syn1neg.npy with mmap=None
+2017-10-31 18:43:02,512 : INFO : setting ignored attribute cum_table to None
+2017-10-31 18:43:02,512 : INFO : loaded Model/wv.model
+2017-10-31 18:43:04,798 : INFO : loading Dictionary object from /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/dict_titles
+2017-10-31 18:43:04,808 : INFO : loaded /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/dict_titles
+2017-10-31 18:43:04,808 : INFO : loading Dictionary object from /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/dict_contents
+2017-10-31 18:43:04,939 : INFO : loaded /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/dict_contents
+2017-10-31 18:43:04,939 : INFO : loading TfidfModel object from /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/tfidf_title.model
+2017-10-31 18:43:04,943 : INFO : loaded /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/tfidf_title.model
+2017-10-31 18:43:04,944 : INFO : loading TfidfModel object from /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/tfidf_content.model
+2017-10-31 18:43:04,996 : INFO : loaded /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/ETL/Model/tfidf_content.model
+Building prefix dict from the default dictionary ...
+2017-10-31 18:43:05,001 : DEBUG : Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+2017-10-31 18:43:05,002 : DEBUG : Loading model from cache /tmp/jieba.cache
+Loading model cost 0.750 seconds.
+2017-10-31 18:43:05,752 : DEBUG : Loading model cost 0.750 seconds.
+Prefix dict has been built succesfully.
+2017-10-31 18:43:05,752 : DEBUG : Prefix dict has been built succesfully.
+total 135 news
