@@ -1,0 +1,1 @@
+0 23 * * * /home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/Daily_crawler/start_crawl.sh
