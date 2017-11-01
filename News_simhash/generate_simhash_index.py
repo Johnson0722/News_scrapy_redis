@@ -3,7 +3,7 @@ import json
 import logging
 import os
 import pickle
-from simhash_news.utilities import get_news_feature
+from utilities import get_news_feature
 
 
 if __name__ == '__main__':
