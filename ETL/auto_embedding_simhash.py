@@ -60,7 +60,6 @@ if __name__ == '__main__':
                 hash_value = Simhash(content_features)
                 # if there is no similarity news, then insert news to MongoDB
                 if len(content_index.get_near_dups(hash_value)) < 1:
-                    # update content_index
                     news_id = int(news_id) + 1
                     content_index.add(str(news_id), hash_value)
                     # get field
@@ -94,4 +93,10 @@ if __name__ == '__main__':
                     count += 1
                     if count % 1000 == 0:
                         print("{} has finished".format(count))
+
+    # update simhash index
+    with open('/home/johnso/PycharmProjects/News_recommendation/News_scrapy_redis/News_simhash/content_index.pkl','wb') as f2:
+        pickle.dump(content_index, f2)
+        pickle.dump(news_id,f2)
+
     print('total {} news'.format(count))
