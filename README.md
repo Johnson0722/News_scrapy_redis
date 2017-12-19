@@ -55,7 +55,7 @@
 * 将scrapy爬虫改写成spider-redis时，要注意一下问题：
   * scrapy-redis维护两个队列，一个判重池和调度队列，判重池用于存储爬取过的url, 调度队列存储待爬取的url，这两个队列都存在redis中（每个待爬取网站都有这两个队列）
   
-  * scrapy-redis有空跑问题，即调度队列为空时爬虫程序仍然执行，需要修改scrapy-redis中的源码，具体google
+  * scrapy-redis有空跑问题，即调度队列为空时爬虫程序仍然执行，需要修改scrapy-redis中的源码，主要就是修改site-packages/scrapy_redis中的spiders,在def next_requests(self)中加几行代码，具体google
 　
   * 使用scrapy-redis定时增量抓取时，每次抓取之前需要先清空调度池，然后向调度池push各个网站的start_urls
 
