@@ -134,7 +134,8 @@ def setence2vec(vec_bow, w2v_model, tfidf_model, word_list):
             setence_vec += w2v_model[word_list[word_index]] * weight
         except:
             continue
-    setence_vec = setence_vec/LA.norm(setence_vec)
+    if LA.norm(setence_vec) > 0:
+        setence_vec = setence_vec/LA.norm(setence_vec)
     return setence_vec
 
 def loading_models():
