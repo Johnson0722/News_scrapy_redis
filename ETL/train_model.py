@@ -44,6 +44,15 @@ def build_save_dict(titles):
     dict_titles.save('models/dict_titles')
     return dict_titles
 
+def memory_friendly_dict(data_path):
+    # build dicts
+    print('build dicts...')
+    dict_texts = corpora.Dictionary(line.split(' ')[1:] for line in open(data_path,'r'))
+    print('saving dicts')
+    # save dictionaries
+    dict_texts.save('data/dict_texts')
+    return dict_texts
+
 def build_save_corpus(titles):
     # build corpus
     corpus_titles = [dicts.doc2bow(title) for title in titles]
